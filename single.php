@@ -17,7 +17,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-					            <?php the_post_thumbnail("large",["class" => "img-fluid"]);
+                                <?php
+                                    $thumbnail = get_the_post_thumbnail_url(null, "large");
+                                    printf("<a href=\"#\" data-featherlight=\"%s\">", $thumbnail);
+                                    if(has_post_thumbnail()) {
+					                the_post_thumbnail("large",["class" => "img-fluid"]);
+					                echo "</a>";
+					            }
 						            the_content(); ?>
                             </div>
 				            <?php if(comments_open()) { ?>
